@@ -1,4 +1,5 @@
 # 📌 Proyecto en Rider - Lista de Tareas
+![{145331A3-3834-4BC3-8FBC-6E9981E6BA56}](https://github.com/user-attachments/assets/8cf20295-1895-434b-a557-3a19eb6fd85c)
 
 ### 📝 Descripción
 Este es un proyecto web desarrollado en **ASP.NET Core MVC** que permite gestionar una lista de tareas. Los usuarios pueden agregar, editar, eliminar y marcar tareas como completadas mediante una interfaz moderna y profesional.
