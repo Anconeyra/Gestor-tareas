@@ -61,10 +61,10 @@ Desde aquí puedes probar los endpoints de la API, ver la documentación y reali
 
 ```bash
 # 1️⃣ Clona el repositorio
-git clone https://github.com/tu-usuario/tu-repositorio.git
+git clone https://github.com/Anconeyra/Gestor-tareas.git
 
 # 2️⃣ Accede al directorio del proyecto
-cd nombre-del-proyecto
+cd Gestor-tarea
 
 # 3️⃣ Restaura los paquetes NuGet
 dotnet restore
