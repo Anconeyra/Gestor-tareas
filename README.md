@@ -59,21 +59,41 @@ Desde aquí puedes probar los endpoints de la API, ver la documentación y reali
 
 ## 🔧 Instalación y Configuración
 
+### 1️⃣ Clona el repositorio
 ```bash
-# 1️⃣ Clona el repositorio
 git clone https://github.com/Anconeyra/Gestor-tareas.git
+```
 
-# 2️⃣ Accede al directorio del proyecto
+### 2️⃣ Accede al directorio del proyecto
+```bash
 cd Gestor-tarea
+```
 
-# 3️⃣ Restaura los paquetes NuGet
+### 3️⃣ Restaura los paquetes NuGet
+```bash
 dotnet restore
+```
 
-# 4️⃣ Ejecuta el proyecto
+### 4️⃣ Ejecuta el proyecto
+```bash
 dotnet run
+```
 
-# 5️⃣ Accede a la interfaz web y Swagger
-# Interfaz web:
-http://localhost:5000  
-# Documentación de API (Swagger):
-http://localhost:5000/swagger
+### 5️⃣ Accede a la interfaz web y Swagger
+
+- **Interfaz web:**  
+  🔗 `http://localhost:5000`
+
+- **Documentación de API (Swagger):**  
+  🔗 `http://localhost:5000/swagger`
+
+🚀 ¡Listo! Ahora puedes comenzar a usar la aplicación.
+
+---
+
+## 🤝 Contribuciones
+Si deseas contribuir, ¡siéntete libre de hacer un fork y enviar un pull request! 🚀
+
+## 📜 Licencia
+Este proyecto está bajo la [licencia MIT](https://opensource.org/licenses/MIT). Puedes usarlo y modificarlo libremente. 🎯
+
