@@ -1,4 +1,5 @@
 # 📌 Proyecto en Rider - Lista de Tareas
+
 ![{145331A3-3834-4BC3-8FBC-6E9981E6BA56}](https://github.com/user-attachments/assets/8cf20295-1895-434b-a557-3a19eb6fd85c)
 
 ### 📝 Descripción
@@ -20,6 +21,18 @@ También cuenta con integración de **Swagger**, lo que facilita la prueba y doc
 - **Bootstrap 5** - Diseño responsivo y moderno  
 - **jQuery & AJAX** - Interacciones dinámicas  
 - **Swagger** - Documentación interactiva de la API  
+
+---
+
+## 📖 Lenguajes Usados
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/0b08308a-9859-4e94-b604-ea54b627016d" width="60"/>
+  <img src="https://github.com/user-attachments/assets/c682a363-032f-4e7d-92ce-db523ae95674" width="60"/>
+  <img src="https://github.com/user-attachments/assets/916b4878-6041-4a06-88d6-ad79e355380e" width="60"/>
+  <img src="https://github.com/user-attachments/assets/4c345721-15e2-4749-9151-031ecb4f06d7" width="60"/>
+  <img src="https://github.com/user-attachments/assets/7c4877f0-f3cf-4cbc-a846-7ed107d8fd2e" width="60"/>
+</p>
 
 ---
 
@@ -46,37 +59,21 @@ Desde aquí puedes probar los endpoints de la API, ver la documentación y reali
 
 ## 🔧 Instalación y Configuración
 
-### 1️⃣ Clona el repositorio:
 ```bash
+# 1️⃣ Clona el repositorio
 git clone https://github.com/tu-usuario/tu-repositorio.git
-```
 
-### 2️⃣ Accede al directorio del proyecto:
-```bash
+# 2️⃣ Accede al directorio del proyecto
 cd nombre-del-proyecto
-```
 
-### 3️⃣ Restaura los paquetes NuGet:
-```bash
+# 3️⃣ Restaura los paquetes NuGet
 dotnet restore
-```
 
-### 4️⃣ Ejecuta el proyecto:
-```bash
+# 4️⃣ Ejecuta el proyecto
 dotnet run
-```
 
-### 5️⃣ Accede a la interfaz web y Swagger:
-- **Interfaz web:**  
-  `http://localhost:5000`
-- **Documentación de API (Swagger):**  
-  `http://localhost:5000/swagger`
-
-🚀 ¡Listo! Ahora puedes comenzar a usar la aplicación.
-
-## 🤝 Contribuciones
-Si deseas contribuir, ¡siéntete libre de hacer un fork y enviar un pull request! 🚀
-
-## 📜 Licencia
-Este proyecto está bajo la [licencia MIT](https://opensource.org/licenses/MIT). Puedes usarlo y modificarlo libremente. 🎯
-Este proyecto está bajo la licencia MIT. Puedes usarlo y modificarlo libremente. 🎯
+# 5️⃣ Accede a la interfaz web y Swagger
+# Interfaz web:
+http://localhost:5000  
+# Documentación de API (Swagger):
+http://localhost:5000/swagger
