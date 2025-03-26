@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Linq;
-using EstudianteAppModels.Models; // Asegúrate de que este es el namespace correcto
-using Microsoft.AspNetCore.Mvc;
-using Qstom.QuoteIt.Core.Model.Cotizaciones.Entities;
-using Usuario = Tarea.Models.Usuario;
+using Tarea.Models;
 
 namespace Tareas.Controllers
 {
@@ -19,22 +17,15 @@ namespace Tareas.Controllers
             return Ok(_tareas);
         }
 
-        [HttpGet("{id}")]
-        public ActionResult<Usuario> ObtenerTareaPorId(int id)
-        {
-            var tarea = _tareas.FirstOrDefault(t => t.Id == id);
-            if (tarea == null)
-                return NotFound(new { mensaje = "Tarea no encontrada" });
-
-            return Ok(tarea);
-        }
-
         [HttpPost]
         public ActionResult AgregarTarea([FromBody] Usuario tarea)
         {
+            if (tarea == null)
+                return BadRequest(new { mensaje = "La tarea no puede ser nula" });
+
             tarea.Id = _tareas.Count + 1;
             _tareas.Add(tarea);
-            return CreatedAtAction(nameof(ObtenerTareaPorId), new { id = tarea.Id }, tarea);
+            return CreatedAtAction(nameof(ObtenerTareas), new { id = tarea.Id }, tarea);
         }
 
         [HttpPut("{id}")]
@@ -45,8 +36,18 @@ namespace Tareas.Controllers
                 return NotFound(new { mensaje = "Tarea no encontrada" });
 
             tareaExistente.Nombre = tarea.Nombre;
-            tareaExistente.Completada = tarea.Completada;
             return NoContent();
+        }
+
+        [HttpPut("completar/{id}")]
+        public ActionResult CompletarTarea(int id)
+        {
+            var tarea = _tareas.FirstOrDefault(t => t.Id == id);
+            if (tarea == null)
+                return NotFound(new { mensaje = "Tarea no encontrada" });
+
+            tarea.Completada = !tarea.Completada;
+            return Ok(new { tarea.Id, tarea.Completada });
         }
 
         [HttpDelete("{id}")]

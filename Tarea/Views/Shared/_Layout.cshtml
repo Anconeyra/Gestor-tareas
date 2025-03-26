@@ -1,47 +1,138 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>@ViewData["Title"] - Tarea</title>
-    <script type="importmap"></script>
+    <title>@ViewData["Title"] - Proyecto en Rider</title>
+    
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
     <link rel="stylesheet" href="~/Tarea.styles.css" asp-append-version="true"/>
+    
+    <style>
+      
+        body {
+            background-color: #f4f7fc;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, #222831, #393E46);
+            padding: 12px 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff !important;
+        }
+        .navbar-nav .nav-link {
+            color: #fff !important;
+            margin-right: 15px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #00ADB5 !important;
+            transform: scale(1.1);
+        }
+        
+        .container {
+            margin-top: 30px;
+        }
+        
+        .task-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
+        .task-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-add {
+            background: #00ADB5;
+            border: none;
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+        .btn-add:hover {
+            background: #007A8A;
+            transform: scale(1.05);
+        }
+        
+        .table {
+            border-radius: 12px;
+            overflow: hidden;
+            background: #fff;
+        }
+        .table th {
+            background: #222831;
+            color: white;
+            text-align: center;
+        }
+        .table td {
+            text-align: center;
+        }
+        
+        footer {
+            background: #222831;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
+
 <header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Tarea</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                📌 Proyecto en Rider
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
+                            🏠 Inicio
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        <a class="nav-link" href="https://github.com/Anconeyra" target="_blank">
+                            🐙 GitHub
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 </header>
+
 <div class="container">
     <main role="main" class="pb-3">
-        @RenderBody()
+        <div class="task-card">
+            @RenderBody()
+        </div>
     </main>
 </div>
 
-<footer class="border-top footer text-muted">
+<footer>
     <div class="container">
-        &copy; 2025 - Tarea - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        &copy; 2025 - Arequipa | Proyecto en Rider 🚀
     </div>
 </footer>
+
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
