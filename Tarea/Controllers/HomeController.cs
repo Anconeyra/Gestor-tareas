@@ -1,31 +1,62 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Text;
+using System.Text.Json;
+using System.Threading.Tasks;
 using Tarea.Models;
 
-namespace Tarea.Controllers;
-
-public class HomeController : Controller
+namespace Tareas.Controllers
 {
-    private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
+    public class HomeController : Controller
     {
-        _logger = logger;
-    }
+        private static readonly HttpClient _httpClient = new HttpClient();
 
-    public IActionResult Index()
-    {
-        return View();
-    }
+        [HttpGet]
+        public async Task<IActionResult> Index()
+        {
+            var response = await _httpClient.GetAsync("http://localhost:5120/api/tareas");
+            var json = await response.Content.ReadAsStringAsync();
+            var tareas = JsonSerializer.Deserialize<List<Usuario>>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
-    public IActionResult Privacy()
-    {
-        return View();
-    }
+            return View(tareas ?? new List<Usuario>());
+        }
 
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        [HttpPost]
+        public async Task<IActionResult> AgregarTarea(string Nombre, bool Completada = false)
+        {
+            var nuevaTarea = new Usuario { Nombre = Nombre, Completada = Completada };
+            var json = JsonSerializer.Serialize(nuevaTarea);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            await _httpClient.PostAsync("http://localhost:5120/api/tareas", content);
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost("/Home/CompletarTarea/{id}")]
+        public async Task<IActionResult> CompletarTarea(int id)
+        {
+            await _httpClient.PutAsync($"http://localhost:5120/api/tareas/completar/{id}", null);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost("/Home/EditarTarea/{id}")]
+        public async Task<IActionResult> EditarTarea(int id, string nombre)
+        {
+            var tarea = new { Nombre = nombre };
+            var json = JsonSerializer.Serialize(tarea);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            await _httpClient.PutAsync($"http://localhost:5120/api/tareas/{id}", content);
+            return RedirectToAction("Index");
+        }
+
+        [HttpDelete("/Home/EliminarTarea/{id}")]
+        public async Task<IActionResult> EliminarTarea(int id)
+        {
+            await _httpClient.DeleteAsync($"http://localhost:5120/api/tareas/{id}");
+            return RedirectToAction("Index");
+        }
     }
 }

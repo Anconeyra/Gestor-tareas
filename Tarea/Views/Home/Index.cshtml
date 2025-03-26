@@ -1,8 +1,71 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model List<Tarea.Models.Usuario>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tareas</title>
+    <script>
+        function completarTarea(id) {
+            fetch(`/Home/CompletarTarea/${id}`, { method: 'POST' })
+                .then(() => location.reload());
+        }
+
+        function editarTarea(id, nombre) {
+            const nuevoNombre = prompt("Editar tarea:", nombre);
+            if (nuevoNombre) {
+                fetch(`/Home/EditarTarea/${id}?nombre=${encodeURIComponent(nuevoNombre)}`, { method: 'POST' })
+                    .then(() => location.reload());
+            }
+        }
+
+        function eliminarTarea(id) {
+            if (confirm("¿Seguro que quieres eliminar esta tarea?")) {
+                fetch(`/Home/EliminarTarea/${id}`, { method: 'DELETE' })
+                    .then(() => location.reload());
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Lista de Tareas</h1>
+
+    <form method="post" action="/Home/AgregarTarea">
+        <label>Nombre:</label>
+        <input type="text" name="Nombre" required>
+        <label>Completada:</label>
+        <input type="checkbox" name="Completada">
+        <button type="submit">Agregar</button>
+    </form>
+
+    <table border="1">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Completada</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var tarea in Model)
+        {
+            <tr>
+                <td>@tarea.Id</td>
+                <td>@tarea.Nombre</td>
+                <td>
+                    <button onclick="completarTarea(@tarea.Id)">
+                        @(tarea.Completada ? "✅" : "⬜")
+                    </button>
+                </td>
+                <td>
+                    <button onclick="editarTarea(@tarea.Id, '@tarea.Nombre')">✏ Editar</button>
+                    <button onclick="eliminarTarea(@tarea.Id)">🗑 Eliminar</button>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</body>
+</html>
